@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Person: Identifiable, Decodable {
+struct Person: Identifiable, Equatable, Decodable {
     let name: String
     let height: String
     let mass: String

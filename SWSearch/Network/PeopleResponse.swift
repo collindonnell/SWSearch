@@ -5,9 +5,11 @@
 //  Created by Collin Donnell on 2/11/25.
 //
 
+import Foundation
+
 struct PeopleResponse: Decodable {
     let count: Int
-    let next: String?
-    let previous: String?
+    let next: URL?
+    let previous: URL?
     let results: [Person]
 }

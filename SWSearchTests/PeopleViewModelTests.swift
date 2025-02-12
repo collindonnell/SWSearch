@@ -9,9 +9,9 @@ import Testing
 @testable import SWSearch
 struct PeopleViewModelTests {
 
-    @Test func testLoadsPeopleResponse() async throws {
+    @Test func testLoadsInitialResponse() async throws {
         let viewModel = PeopleViewModel(apiClient: MockAPIClient())
-        await viewModel.fetchAll()
+        await viewModel.fetchNextPage()
         await #expect(viewModel.people.count > 0)
     }
 

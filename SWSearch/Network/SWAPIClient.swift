@@ -9,7 +9,6 @@ import Foundation
 
 final class SWAPIClient: APIClient {
     private let session: URLSession
-    private let baseURL = URL(string: "https://swapi.dev/api/")!
 
     private let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
@@ -21,8 +20,7 @@ final class SWAPIClient: APIClient {
         self.session = session
     }
 
-    func fetch<T: Decodable>(from path: String) async throws -> T {
-        let url = self.url(for: path)
+    func fetch<T: Decodable>(from url: URL) async throws -> T {
         let data = try await fetchData(from: url)
         return try decoder.decode(T.self, from: data)
     }
@@ -30,9 +28,5 @@ final class SWAPIClient: APIClient {
     private func fetchData(from url: URL) async throws -> Data {
         let (data, _) = try await session.data(from: url)
         return data
-    }
-
-    private func url(for path: String) -> URL {
-        baseURL.appendingPathComponent(path)
     }
 }

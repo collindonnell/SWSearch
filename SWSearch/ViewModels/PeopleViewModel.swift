@@ -11,18 +11,27 @@ import Foundation
 class PeopleViewModel: ErrorMessageable {
     @MainActor var people: [Person] = []
     @MainActor var errorMessage: String?
+
     private let apiClient: APIClient
-    
+    private var isLoading: Bool = false
+    private var nextPageURL: URL? = APIEndpoint.people.url
+
     init(apiClient: APIClient = SWAPIClient()) {
         self.apiClient = apiClient
     }
     
-    func fetchAll() async {
+    func fetchNextPage() async {
+        guard let nextPageURL, !isLoading else { return }
+
+        isLoading = true
+        defer { isLoading = false }
+
         do {
-            let response: PeopleResponse = try await apiClient.fetch(from: "/people")
+            let response: PeopleResponse = try await apiClient.fetch(from: nextPageURL)
             let fetchedPeople = response.results
+            self.nextPageURL = response.next
             await MainActor.run {
-                people = fetchedPeople
+                people.append(contentsOf: fetchedPeople)
             }
         } catch {
             await MainActor.run { errorMessage = error.localizedDescription }

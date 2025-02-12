@@ -14,7 +14,7 @@ class MockAPIClient: APIClient {
         return decoder
     }()
 
-    func fetch<T>(from path: String) async throws -> T where T : Decodable {
+    func fetch<T>(from url: URL) async throws -> T where T : Decodable {
         let data = try Data(contentsOf: URL(fileURLWithPath: Bundle(for: MockAPIClient.self).path(forResource: "People", ofType: "json")!))
         let response = try decoder.decode(T.self, from: data)
         return response

@@ -17,9 +17,16 @@ struct PeopleView: View {
     var body: some View {
         List(viewModel.people) { person in
             Text(person.name)
+                .onAppear {
+                    if person == viewModel.people.last {
+                        Task {
+                            await viewModel.fetchNextPage()
+                        }
+                    }
+                }
         }
         .task {
-            await viewModel.fetchAll()
+            await viewModel.fetchNextPage()
         }
     }
 }
