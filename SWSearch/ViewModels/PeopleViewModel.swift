@@ -10,13 +10,14 @@ import Foundation
 @Observable
 class PeopleViewModel: ErrorMessageable {
     @MainActor var people: [Person] = []
+    @MainActor var selection: Person?
     @MainActor var errorMessage: String?
 
     private let apiClient: APIClient
     private var isLoading: Bool = false
     private var nextPageURL: URL? = APIEndpoint.people.url
 
-    init(apiClient: APIClient = SWAPIClient()) {
+    init(apiClient: APIClient = .live) {
         self.apiClient = apiClient
     }
     

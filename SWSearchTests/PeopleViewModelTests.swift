@@ -10,7 +10,7 @@ import Testing
 struct PeopleViewModelTests {
 
     @Test func testLoadsInitialResponse() async throws {
-        let viewModel = PeopleViewModel(apiClient: MockAPIClient())
+        let viewModel = PeopleViewModel(apiClient: .mock)
         await viewModel.fetchNextPage()
         await #expect(viewModel.people.count > 0)
     }

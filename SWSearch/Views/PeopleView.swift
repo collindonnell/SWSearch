@@ -15,16 +15,19 @@ struct PeopleView: View {
     }
 
     var body: some View {
-        List(viewModel.people) { person in
-            Text(person.name)
-                .onAppear {
-                    if person == viewModel.people.last {
-                        Task {
-                            await viewModel.fetchNextPage()
+        List(viewModel.people, selection: $viewModel.selection) { person in
+            NavigationLink(value: person, label: {
+                Text(person.name)
+                    .onAppear {
+                        if person == viewModel.people.last {
+                            Task {
+                                await viewModel.fetchNextPage()
+                            }
                         }
                     }
-                }
+            })
         }
+        .listStyle(SidebarListStyle())
         .task {
             await viewModel.fetchNextPage()
         }
