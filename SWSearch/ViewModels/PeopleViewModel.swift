@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class PeopleViewModel: ErrorMessageable {
+final class PeopleViewModel: ErrorMessageable {
     @MainActor var people: [Person] = []
     @MainActor var selection: Person?
     @MainActor var errorMessage: String?

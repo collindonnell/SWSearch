@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct PersonView: View {
+    private var viewModel: PersonViewModel
+
+    init(person: Person) {
+        viewModel = .init(person: person)
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(viewModel.person.name)
+            .navigationTitle("Person")
     }
 }
 
 #Preview {
-    PersonView()
+    PersonView(person: Person(name: "Luke", height: "100", mass: "100", url: "https://swapi.dev", films: nil))
 }

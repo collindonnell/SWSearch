@@ -9,19 +9,19 @@ import SwiftUI
 
 struct RootView: View {
     @State private var peopleViewModel: PeopleViewModel
+    @State private var columnVisiblity = NavigationSplitViewVisibility.all
 
     init(peopleViewModel: PeopleViewModel = .init(apiClient: .live)) {
         _peopleViewModel = .init(initialValue: peopleViewModel)
     }
 
     var body: some View {
-        NavigationSplitView {
+        NavigationSplitView(columnVisibility: $columnVisiblity) {
             PeopleView(viewModel: peopleViewModel)
-                .navigationTitle("People")
         } detail: {
-            Text(peopleViewModel.selection?.name ?? "Select a person")
+            Text("No Selection")
         }
-
+        .navigationSplitViewStyle(.balanced)
     }
 }
 

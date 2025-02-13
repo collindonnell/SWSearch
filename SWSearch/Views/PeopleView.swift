@@ -15,7 +15,7 @@ struct PeopleView: View {
     }
 
     var body: some View {
-        List(viewModel.people, selection: $viewModel.selection) { person in
+        List(viewModel.people) { person in
             NavigationLink(value: person, label: {
                 Text(person.name)
                     .onAppear {
@@ -27,7 +27,12 @@ struct PeopleView: View {
                     }
             })
         }
-        .listStyle(SidebarListStyle())
+        .navigationTitle("People")
+        .navigationDestination(for: Person.self) { person in
+            NavigationStack {
+                PersonView(person: person)
+            }
+        }
         .task {
             await viewModel.fetchNextPage()
         }

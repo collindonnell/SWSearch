@@ -11,7 +11,7 @@ import SwiftUI
 struct SWSearchApp: App {
     var body: some Scene {
         WindowGroup {
-            PeopleView()
+            RootView()
         }
     }
 }
