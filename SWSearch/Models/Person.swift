@@ -12,6 +12,7 @@ struct Person: Identifiable, Equatable, Decodable, Hashable {
     let height: String
     let mass: String
     let url: String
+    let films: Relationship<Film>
 
     var id: String {
         url.components(separatedBy: "/").filter { !$0.isEmpty }.last!

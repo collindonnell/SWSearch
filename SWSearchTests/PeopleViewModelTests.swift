@@ -15,4 +15,10 @@ struct PeopleViewModelTests {
         await #expect(viewModel.people.count > 0)
     }
 
+    @Test func testLoadsRelationships() async throws {
+        let viewModel = PeopleViewModel(apiClient: .mock)
+        await viewModel.fetchNextPage()
+        let person = await viewModel.people.first!
+        #expect(person.films.urls.count > 0)
+    }
 }
