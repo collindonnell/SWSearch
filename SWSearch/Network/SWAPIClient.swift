@@ -25,6 +25,21 @@ final class SWAPIClient: APIClient {
         return try decoder.decode(T.self, from: data)
     }
 
+    func fetch<T: Decodable>(from urls: [URL]) async throws -> [T] {
+        try await withThrowingTaskGroup(of: T.self) { group in
+            for url in urls {
+                group.addTask {
+                    return try await self.fetch(from: url)
+                }
+            }
+            var results = [T]()
+            for try await result in group {
+                results.append(result)
+            }
+            return results
+        }
+    }
+
     private func fetchData(from url: URL) async throws -> Data {
         let (data, _) = try await session.data(from: url)
         return data

@@ -14,6 +14,5 @@ struct Relationship<T: Decodable & Equatable & Hashable>: Decodable, Equatable, 
     init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         self.urls = try container.decode([URL].self)
-        print("Decoded urls: \(urls)")
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol APIClient {
     func fetch<T: Decodable>(from url: URL) async throws -> T
+    func fetch<T: Decodable>(from urls: [URL]) async throws -> [T]
 }
 
 extension APIClient where Self == SWAPIClient {

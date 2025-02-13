@@ -19,4 +19,8 @@ class MockAPIClient: APIClient {
         let response = try decoder.decode(T.self, from: data)
         return response
     }
+
+    func fetch<T>(from urls: [URL]) async throws -> [T] where T : Decodable {
+        fatalError("init(urls:) has not been implemented")
+    }
 }
