@@ -14,4 +14,8 @@ final class PersonViewModel {
     init(person: Person) {
         self.person = person
     }
+
+    func loadRelationships() async throws {
+        
+    }
 }

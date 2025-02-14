@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Relationship<T: Decodable & Equatable & Hashable & Identifiable>: Decodable, Equatable, Hashable {
+typealias RelationshipElement = Decodable & Equatable & Hashable & Identifiable
+
+struct Relationship<T: RelationshipElement>: Decodable, Equatable, Hashable {
     enum State: Hashable {
         case unloaded
         case loading
@@ -15,6 +17,7 @@ struct Relationship<T: Decodable & Equatable & Hashable & Identifiable>: Decodab
         case failed
     }
 
+    var name: String?
     var state: State = .unloaded
     let urls: [URL]
 
@@ -22,10 +25,9 @@ struct Relationship<T: Decodable & Equatable & Hashable & Identifiable>: Decodab
         let container = try decoder.singleValueContainer()
         self.urls = try container.decode([URL].self)
     }
-}
 
-// MARK: Loading
-extension Relationship {
+    // MARK: Loading
+
     mutating func loadObjects(using loader: RelationshipLoader = .init(apiClient: .live)) async throws {
         guard case .unloaded = state else { return }
 

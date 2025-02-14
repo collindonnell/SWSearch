@@ -7,14 +7,20 @@
 
 import Foundation
 
-struct Person: Identifiable, Equatable, Decodable, Hashable {
+struct Person: RegisterableRelationships, Identifiable, Equatable, Decodable, Hashable {
     let name: String
     let height: String
     let mass: String
     let url: String
-    let films: Relationship<Film>?
+    let films: Relationship<Film>
 
     var id: String {
         url.components(separatedBy: "/").filter { !$0.isEmpty }.last!
+    }
+
+    func registeredRelationships() -> [any AnyRelationship] {
+        return [
+            AnyRelationshipWrapper(name: "Films", relationship: films)
+        ]
     }
 }
