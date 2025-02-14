@@ -21,5 +21,22 @@ struct PersonView: View {
 }
 
 #Preview {
-    PersonView(person: Person(name: "Luke", height: "100", mass: "100", url: "https://swapi.dev", films: nil))
+    let json = """
+    {
+        "films": []
+    }
+    """.data(using: .utf8)!
+
+    let decoder = JSONDecoder()
+    let relationship = try! decoder.decode(Relationship<Film>.self, from: json)
+
+    PersonView(
+        person: Person(
+            name: "Luke",
+            height: "100",
+            mass: "100",
+            url: "https://swapi.dev",
+            films: relationship
+        )
+    )
 }

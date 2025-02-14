@@ -16,6 +16,8 @@ final class PersonViewModel {
     }
 
     func loadRelationships() async throws {
-        
+//        for wrapper in person.registeredRelationships() {
+//            
+//        }
     }
 }
