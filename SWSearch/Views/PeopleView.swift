@@ -29,9 +29,7 @@ struct PeopleView: View {
         }
         .navigationTitle("People")
         .navigationDestination(for: Person.self) { person in
-            NavigationStack {
-                PersonView(person: person)
-            }
+            PersonView(person: person)
         }
         .task {
             await viewModel.fetchNextPage()

@@ -11,11 +11,19 @@ struct Person: RegisterableRelationships, Identifiable, Equatable, Decodable, Ha
     let name: String
     let height: String
     let mass: String
-    let url: String
+    let hairColor: String
+    let skinColor: String
+    let eyeColor: String
+    let birthYear: String
+    let gender: String
+    let url: URL
     let films: Relationship<Film>
 
+    var heightInCm: Double? { Double(height) }
+    var massInKg: Double? { Double(mass) }
+
     var id: String {
-        url.components(separatedBy: "/").filter { !$0.isEmpty }.last!
+        url.absoluteString.components(separatedBy: "/").filter { !$0.isEmpty }.last!
     }
 
     func registeredRelationships() -> [any AnyRelationship] {

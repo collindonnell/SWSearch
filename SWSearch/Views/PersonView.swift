@@ -15,8 +15,15 @@ struct PersonView: View {
     }
 
     var body: some View {
-        Text(viewModel.person.name)
-            .navigationTitle("Person")
+        List {
+            ForEach(viewModel.details, id: \.label) { detailField in
+                LabeledContent(detailField.label, value: detailField.value)
+            }
+            Section("Films") {
+                Text("hello")
+            }
+        }
+        .navigationTitle(viewModel.person.name)
     }
 }
 
@@ -35,8 +42,15 @@ struct PersonView: View {
             name: "Luke",
             height: "100",
             mass: "100",
-            url: "https://swapi.dev",
+            hairColor: "Brown",
+            skinColor: "Green",
+            eyeColor: "Blue",
+            birthYear: "14 BBY",
+            gender: "male",
+            url: URL(string: "https://swapi.dev")!,
             films: relationship
         )
+
+
     )
 }
