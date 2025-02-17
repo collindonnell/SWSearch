@@ -1,6 +1,6 @@
 {
-  "count": 82,
-  "next": null,
+  "count": 10,
+  "next": "https://swapi.dev/api/people/?page=2",
   "previous": null,
   "results": [
     {
@@ -50,9 +50,7 @@
         "https://swapi.dev/api/films/5/",
         "https://swapi.dev/api/films/6/"
       ],
-      "species": [
-        "https://swapi.dev/api/species/2/"
-      ],
+      "species": ["https://swapi.dev/api/species/2/"],
       "vehicles": [],
       "starships": [],
       "created": "2014-12-10T15:10:51.357000Z",
@@ -77,9 +75,7 @@
         "https://swapi.dev/api/films/5/",
         "https://swapi.dev/api/films/6/"
       ],
-      "species": [
-        "https://swapi.dev/api/species/2/"
-      ],
+      "species": ["https://swapi.dev/api/species/2/"],
       "vehicles": [],
       "starships": [],
       "created": "2014-12-10T15:11:50.376000Z",
@@ -104,9 +100,7 @@
       ],
       "species": [],
       "vehicles": [],
-      "starships": [
-        "https://swapi.dev/api/starships/13/"
-      ],
+      "starships": ["https://swapi.dev/api/starships/13/"],
       "created": "2014-12-10T15:18:20.704000Z",
       "edited": "2014-12-20T21:17:50.313000Z",
       "url": "https://swapi.dev/api/people/4/"
@@ -128,9 +122,7 @@
         "https://swapi.dev/api/films/6/"
       ],
       "species": [],
-      "vehicles": [
-        "https://swapi.dev/api/vehicles/30/"
-      ],
+      "vehicles": ["https://swapi.dev/api/vehicles/30/"],
       "starships": [],
       "created": "2014-12-10T15:20:09.791000Z",
       "edited": "2014-12-20T21:17:50.315000Z",
@@ -190,12 +182,8 @@
       "birth_year": "unknown",
       "gender": "n/a",
       "homeworld": "https://swapi.dev/api/planets/1/",
-      "films": [
-        "https://swapi.dev/api/films/1/"
-      ],
-      "species": [
-        "https://swapi.dev/api/species/2/"
-      ],
+      "films": ["https://swapi.dev/api/films/1/"],
+      "species": ["https://swapi.dev/api/species/2/"],
       "vehicles": [],
       "starships": [],
       "created": "2014-12-10T15:57:50.959000Z",
@@ -212,14 +200,10 @@
       "birth_year": "24BBY",
       "gender": "male",
       "homeworld": "https://swapi.dev/api/planets/1/",
-      "films": [
-        "https://swapi.dev/api/films/1/"
-      ],
+      "films": ["https://swapi.dev/api/films/1/"],
       "species": [],
       "vehicles": [],
-      "starships": [
-        "https://swapi.dev/api/starships/12/"
-      ],
+      "starships": ["https://swapi.dev/api/starships/12/"],
       "created": "2014-12-10T15:59:50.509000Z",
       "edited": "2014-12-20T21:17:50.323000Z",
       "url": "https://swapi.dev/api/people/9/"
@@ -243,9 +227,7 @@
         "https://swapi.dev/api/films/6/"
       ],
       "species": [],
-      "vehicles": [
-        "https://swapi.dev/api/vehicles/38/"
-      ],
+      "vehicles": ["https://swapi.dev/api/vehicles/38/"],
       "starships": [
         "https://swapi.dev/api/starships/48/",
         "https://swapi.dev/api/starships/59/",

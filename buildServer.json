@@ -1,0 +1,19 @@
+{
+	"name": "xcode build server",
+	"version": "0.2",
+	"bspVersion": "2.0",
+	"languages": [
+		"c",
+		"cpp",
+		"objective-c",
+		"objective-cpp",
+		"swift"
+	],
+	"argv": [
+		"/opt/homebrew/bin/xcode-build-server"
+	],
+	"workspace": "/Users/collin/Developer/SWSearch/SWSearch.xcodeproj/project.xcworkspace",
+	"build_root": "/Users/collin/Library/Developer/Xcode/DerivedData/SWSearch-azwrryaxtzvwmzfdkuammurqkjms",
+	"scheme": "SWSearch",
+	"kind": "xcode"
+}
