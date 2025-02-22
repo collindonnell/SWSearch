@@ -30,33 +30,17 @@ final class PersonViewModel {
 
     var formattedHeight: String {
         guard let height = person.heightInCm else { return "n/a" }
-        return formatMeasurement(height, unit: UnitLength.centimeters)
+        return MetricValueFormatter.format(height, unitType: .height)
     }
 
     var formattedMass: String {
         guard let mass = person.massInKg else { return "n/a" }
-        return formatMeasurement(mass, unit: UnitMass.kilograms)
+        return MetricValueFormatter.format(mass, unitType: .mass)
     }
 
     func loadRelationships() async throws {
 //        for wrapper in person.registeredRelationships() {
 //            
 //        }
-    }
-
-    private func formatMeasurement<T: Unit>(_ value: Double, unit: T) -> String {
-        if unit is UnitLength {
-            let formatter = LengthFormatter()
-            formatter.unitStyle = .medium
-            formatter.isForPersonHeightUse = true
-            formatter.numberFormatter.maximumFractionDigits = 0
-            return formatter.string(fromMeters: value / 100)
-        }
-        let measurement = Measurement(value: value, unit: unit)
-        let formatter = MeasurementFormatter()
-        formatter.unitOptions = .naturalScale
-        formatter.numberFormatter.maximumFractionDigits = 1
-        formatter.locale = Locale.current
-        return formatter.string(from: measurement)
     }
 }
