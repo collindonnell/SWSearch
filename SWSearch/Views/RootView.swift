@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var peopleViewModel: PeopleViewModel
+    @State private var peopleViewModel: CollectionViewModel<Person>
     @State private var columnVisiblity = NavigationSplitViewVisibility.all
-
-    init(peopleViewModel: PeopleViewModel = .init(apiClient: .live)) {
+    
+    init(peopleViewModel: CollectionViewModel<Person> = CollectionViewModel.forPeople()) {
         _peopleViewModel = .init(initialValue: peopleViewModel)
     }
-
+    
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisiblity) {
             PeopleView(viewModel: peopleViewModel)
@@ -26,5 +26,5 @@ struct RootView: View {
 }
 
 #Preview {
-    RootView(peopleViewModel: PeopleViewModel(apiClient: .mock))
+    RootView(peopleViewModel: CollectionViewModel<Person>(apiClient: .mock, initialEndpoint: APIEndpoint.people.url))
 }

@@ -1,5 +1,5 @@
 //
-//  PeopleViewModelTests.swift
+//  CollectionViewModelTests.swift
 //  SWSearchTests
 //
 //  Created by Collin Donnell on 2/18/25.

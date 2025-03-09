@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct PeopleResponse: Decodable {
+struct CollectionResponse<T: Decodable>: Decodable {
     let count: Int
     let next: URL?
     let previous: URL?
-    let results: [Person]
+    let results: [T]
 }

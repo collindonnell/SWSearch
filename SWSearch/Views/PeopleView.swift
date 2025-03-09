@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct PeopleView: View {
-    @State private var viewModel: PeopleViewModel
-
-    init(viewModel: PeopleViewModel = PeopleViewModel(apiClient: SWAPIClient())) {
+    @State private var viewModel: CollectionViewModel<Person>
+    
+    init(viewModel: CollectionViewModel<Person> = CollectionViewModel.forPeople()) {
         self.viewModel = viewModel
     }
-
+    
     var body: some View {
-        List(viewModel.people) { person in
+        List(viewModel.items) { person in
             NavigationLink(value: person, label: {
                 Text(person.name)
                     .onAppear {
-                        if person == viewModel.people.last {
+                        if person == viewModel.items.last {
                             Task {
                                 await viewModel.fetchNextPage()
                             }

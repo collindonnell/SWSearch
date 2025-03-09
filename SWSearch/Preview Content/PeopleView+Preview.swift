@@ -10,6 +10,6 @@ import SwiftUI
 
 extension PeopleView {
     static var preview: some View {
-        PeopleView(viewModel: PeopleViewModel(apiClient: MockAPIClient()))
+        PeopleView(viewModel: CollectionViewModel<Person>(apiClient: MockAPIClient(), initialEndpoint: APIEndpoint.people.url))
     }
 }
