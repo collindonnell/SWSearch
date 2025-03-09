@@ -12,21 +12,21 @@ final class CollectionViewModel<Item: Decodable>: ErrorMessageable {
     @MainActor var items: [Item] = []
     @MainActor var selection: Item?
     @MainActor var errorMessage: String?
-    
+
     private let apiClient: APIClient
     private var isLoading: Bool = false
     private var nextPageURL: URL?
-    
+
     init(apiClient: APIClient = .live, initialEndpoint: URL) {
         self.apiClient = apiClient
         self.nextPageURL = initialEndpoint
     }
-    
+
     func fetchNextPage() async {
         guard let nextPageURL, !isLoading else { return }
         isLoading = true
         defer { isLoading = false }
-        
+
         do {
             let response: CollectionResponse<Item> = try await apiClient.fetch(from: nextPageURL)
             let fetchedItems = response.results
@@ -40,9 +40,6 @@ final class CollectionViewModel<Item: Decodable>: ErrorMessageable {
         }
     }
 }
-
-// Maintain backward compatibility with existing PeopleViewModel
-typealias PeopleViewModel = CollectionViewModel<Person>
 
 // Factory method to create a people view model
 extension CollectionViewModel where Item == Person {
